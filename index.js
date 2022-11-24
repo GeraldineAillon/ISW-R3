@@ -5,13 +5,16 @@ const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
 
-const espaciocomRoutes = require('./routes/espaciocomRoutes.js');
-app.use=(cors());
-app.use= (express.json());
+const espaciocomRoutes = require('./routes/espaciocomRoute');
+const reservaespacioRoutes = require('./routes/reservaespacioRoute');
+const fotoRoutes = require('./routes/fotoRoute');
+app.use(cors());
+app.use(express.json());
 app.options('*',cors());
 
 app.use('/api', espaciocomRoutes);
-
+app.use('/api', reservaespacioRoutes);
+app.use('/api',fotoRoutes);
 
 
 mongoose.set('useNewUrlParser', true);
@@ -21,9 +24,7 @@ mongoose.set('useUnifiedTopology', true);
 
 mongoose.connect(process.env.DB, (error)=>{
     if(error){
-        console.log('hola');
         console.log(error);
-        
     }else{
         console.log('Connected to Database');
     }

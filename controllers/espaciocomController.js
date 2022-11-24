@@ -1,13 +1,12 @@
 const Espaciocom = require('../models/espaciocomModel');
-console.log('hola')
 //Funcion para crear los espacios comunes
 
 const createEspaciocom=(req,res)=>{
-    const{name,foto,description,aforo,tiempoReserva,estadoReserva,estadoEspacio}= req.body;
+    const{name,/*fotoespacio,*/description,aforo,tiempoReserva,estadoReserva,estadoEspacio}= req.body;
 
     const newEspaciocom = new Espaciocom({
         name,
-        foto, 
+       // fotoespacio, 
         description, 
         aforo,
         tiempoReserva, 
@@ -21,7 +20,7 @@ const createEspaciocom=(req,res)=>{
         return res.status(201).send(espaciocom)
     })
 }
-//Funcion para mostrar los espacios comunes
+//Funcion para mostrar [TODOS] los espacios comunes
 
 const getEspacioscom= (req,res)=>{
     Espaciocom.find({},(error,espacioscom)=>{
@@ -49,9 +48,40 @@ const updateEspaciocom = (req,res)=> {
     })
 }
 
+// Borra un espacio comun
+const deleteEspaciocom = (req,res) =>{
+    const {id} =req.params
+    Espaciocom.findByIdAndDelete(id,(error,espaciocom)=>{
+        if(error){
+            return res.status(400).send({message:"No se pudo borrar el espacio comun"})
+        }
+        if(!espaciocom){
+            return res.status(404).send({message:"No se encontró el espacio comun"})
+        }
+        return res.status(200).send({message:"El espacio comun se eliminó con exito"})
+    })
+}
+
+
+//Busca solo [UN] espacio comun
+const getEspaciocom = (req,res)=>{
+    const {id} =req.params
+    Espaciocom.findById(id,(error,espaciocom)=>{
+        if(error){
+            return res.status(400).send({message:"No se pudo realizar la busqueda"})
+        }
+        if(espaciocom.length === 0){
+            return res.status(404).send({message:"No se encontró el espacio comun"})
+        }
+        return res.status(200).send(espaciocom)
+    })
+}
 
 module.exports = {
     createEspaciocom,
     getEspacioscom,
-    updateEspaciocom
+    updateEspaciocom,
+    deleteEspaciocom,
+    getEspaciocom
+
 }

@@ -6,9 +6,10 @@
           "minLenght": 1,
           "maxLength": 100
         },
-        "foto": {
-          "type":"buffer",
-          "required":false
+        "fotoespacio": {
+          "type": "Schema.ObjectId",
+          "ref":"Fotos",
+          "required": false
         },
         "description": {
           "type": "String",
@@ -41,6 +42,16 @@
           "maxLength":40
       }
     },
+    "Fotos": {
+      "nombre": {
+        "type":"String",
+        "required":false
+      },
+      "ruta":{
+        "type" :"String",
+        "required":true
+      }
+    },
       "usuario": {
         "name": {
           "type": "String",
@@ -48,9 +59,10 @@
           "minLenght": 1,
           "maxLength": 100
         },
-        "foto": {
-          "type": "buffer",
-          "required": true
+        "fotousuario": {
+          "type": "Schema.ObjectId",
+          "ref":"Fotos",
+          "required": false
         },
         "correoPersonal": {
           "type": "String",
