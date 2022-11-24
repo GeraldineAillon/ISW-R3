@@ -5,24 +5,25 @@ const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
 
+const espaciocomRoutes = require('./routes/espaciocomRoutes.js');
 app.use=(cors());
 app.use= (express.json());
 app.options('*',cors());
 
+app.use('/api', espaciocomRoutes);
 
-const options={
-    useNewUrlParser: true,
-    autoIndex:true,
-    keepAlive:true,
-    connectTimeoutMS: 10000,
-    socketTimeoutMS: 45000,
-    family:4,
-    useUnifiedTopology: true
 
-}
-mongoose.connect(process.env.DB, options, (error)=>{
+
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
+
+mongoose.connect(process.env.DB, (error)=>{
     if(error){
+        console.log('hola');
         console.log(error);
+        
     }else{
         console.log('Connected to Database');
     }
