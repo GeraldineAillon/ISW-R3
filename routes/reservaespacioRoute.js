@@ -6,7 +6,7 @@ const api = express.Router();
 api.post('/reservaespacio', reservaespacioController.createReservaespacio);
 api.get('/reservaespacios',reservaespacioController.getReservaespacios);
 api.put('/reservaespacio/update/:id', reservaespacioController.updateReservaespacio);
-api.delete('/reservaespacio/',reservaespacioController.deleteReservaespacio)
+api.delete('/reservaespacio/delete/:id',reservaespacioController.deleteReservaespacio)
 api.get('/reservaespacio/search/:id',reservaespacioController.getReservaespacio);
 
 module.exports = api

@@ -1,4 +1,4 @@
-const Espaciocom = require('../models/espaciocomModel');
+const Espaciocom = require('../models/espaciocom');
 //Funcion para crear los espacios comunes
 
 const createEspaciocom=(req,res)=>{

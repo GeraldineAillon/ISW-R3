@@ -1,4 +1,4 @@
-const Reservaespacio = require('../models/reservaespacioModel');
+const Reservaespacio = require('../models/reservaespacio');
 
 //Funcion para crear reservas
 

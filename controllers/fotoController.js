@@ -1,4 +1,4 @@
-const Foto = require('../models/fotoModel');
+const Foto = require('../models/foto');
 
 //Funcion para crear fotos
 

@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const reservaespacioSchema = new Schema({
-   /* espacioreservado: {
-        type: [Schema.ObjectId],
-        ref: espaciocom,
+    espacioreservado: {
+        type: Schema.ObjectId,
+        ref: 'espaciocom',
         required: true
-      },*/
+      },
       fechainicio:{
       type:Date,
       required:true

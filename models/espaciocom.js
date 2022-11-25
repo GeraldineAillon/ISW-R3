@@ -7,11 +7,11 @@ const espaciocomSchema = new Schema({
         minLength: 1,
         maxLength: 100
       },
-      /*fotoespacio: {
+      fotoespacio: {
         type: [Schema.ObjectId],
-        ref : fotos,
+        ref : 'foto',
         required: false
-      },*/
+      },
       description: {
         type: String,
         required: true,
