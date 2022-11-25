@@ -1,0 +1,121 @@
+{
+    "espaciocom": {
+        "name": {
+          "type": "String",
+          "required": true,
+          "minLenght": 1,
+          "maxLength": 100
+        },
+        "foto": {},
+        "description": {
+          "type": "String",
+          "required": true,
+          "minLenght": 1,
+          "maxLength": 2000
+        },
+        "aforo": {
+          "type": "String",
+          "required": true,
+          "minLenght": 1,
+          "maxLength": 100
+        },
+        "tiempoReserva": {
+          "type": "number",
+          "required": true,
+          "minLenght": 1,
+          "maxLength": 100
+        },
+        "estadoReserva": {
+          "type":"String",
+          "required": true,
+          "minLenght":1,
+          "maxLength":40
+          },
+          "estadoEspacio": {
+          "type":"String",
+          "required": true,
+          "minLenght":1,
+          "maxLength":40
+      }
+    },
+      "usuario": {
+        "name": {
+          "type": "String",
+          "required": true,
+          "minLenght": 1,
+          "maxLength": 100
+        },
+        "foto": {},
+        "correoPersonal": {
+          "type": "String",
+          "required": true,
+          "minLenght": 1,
+          "maxLength": 100
+        },
+        "nroTelefono": {
+          "type": "number",
+          "required": true,
+          "minLenght": 9,
+          "maxLength": 12
+        },
+        "role": {
+          "type": "String",
+          "default": "user"
+        },
+        "reserva": {
+          "type": "Schema.ObjectId",
+          "ref": "espacioCom",
+          "default":"No registra reservas"
+        },
+        "sancionU": {
+          "type": "Schema.ObjectId",
+          "ref": "sancion",
+          "default":"No presenta sancion"
+        }
+      },
+
+      "reservaespacio": {
+        "espacioReservado": {
+          "type": ["Schema.ObjectId"],
+          "ref": "espacioCom",
+          "required": true
+        },
+        "FechaInicio":{
+        "type":"Date",
+        "required":true
+        },
+
+        "FechaTermino": {
+        "type":"Date",
+        "required":true
+       },
+
+        "observacion": {
+          "type": "String",
+          "required": false,
+          "minLenght": 1,
+          "maxLength": 2000
+        }
+      },
+
+      "sancion": {
+        "tipoSancion":{
+            "type":"String",
+            "required": true,
+            "minLenght": 1,
+            "maxLength": 100
+        },
+        "tiempoSancion": {
+          "type": "String",
+          "required": false,
+          "minLenght": 1,
+          "maxLength": 100
+        },
+        "montoSancion": {
+          "type": "number",
+          "required": false,
+          "minLenght": 1,
+          "maxLength": 10
+        }
+      }
+}
