@@ -1,6 +1,12 @@
 const mongoose= require('mongoose');
 const Schema = mongoose.Schema;
 const usuarioSchema = new Schema({
+
+  sancionU: {
+    type: Schema.ObjectId,
+    ref: 'sancion',
+    required: true,
+    },
         name: {
           type: String,
           required: true,

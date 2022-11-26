@@ -3,88 +3,98 @@
         "name": {
           "type": "String",
           "required": true,
-          "minLength": 1,
+          "minLenght": 1,
           "maxLength": 100
         },
-        "foto": {
-            "type":"buffer",
-            "required": true
+        "fotoespacio": {
+          "type": ["Schema.ObjectId"],
+          "ref":"foto",
+          "required": false
         },
         "description": {
           "type": "String",
           "required": true,
-          "minLength": 1,
+          "minLenght": 1,
           "maxLength": 2000
         },
         "aforo": {
           "type": "String",
           "required": true,
-          "minLength": 1,
+          "minLenght": 1,
           "maxLength": 100
         },
         "tiempoReserva": {
-          "type": "number",
+          "type": "Number",
           "required": true,
-          "minLength": 1,
+          "minLenght": 1,
           "maxLength": 100
         },
         "estadoReserva": {
           "type":"String",
           "required": true,
-          "minLength":1,
+          "minLenght":1,
           "maxLength":40
           },
           "estadoEspacio": {
           "type":"String",
           "required": true,
-          "minLength":1,
+          "minLenght":1,
           "maxLength":40
+      }
+    },
+    "foto": {
+      "nombre": {
+        "type":"String",
+        "required":false
+      },
+      "ruta":{
+        "type" :"String",
+        "required":true
       }
     },
       "usuario": {
         "name": {
           "type": "String",
-          "required": false,
-          "minLength": 1,
+          "required": true,
+          "minLenght": 1,
           "maxLength": 100
         },
-        "foto": {
-            "type":"buffer",
-            "required": true
+        "fotousuario": {
+          "type": "Schema.ObjectId",
+          "ref":"foto",
+          "required": false
         },
         "correoPersonal": {
           "type": "String",
           "required": true,
-          "minLength": 1,
+          "minLenght": 1,
           "maxLength": 100
         },
         "nroTelefono": {
           "type": "number",
           "required": true,
-          "minLength": 9,
+          "minLenght": 9,
           "maxLength": 12
         },
         "role": {
           "type": "String",
-          "minLength":4,
-          "maxLength":5,
           "default": "user"
         },
         "reserva": {
-          "type": "Schema.ObjectId",
+          "type": ["Schema.ObjectId"],
           "ref": "espacioCom",
           "default":"No registra reservas"
         },
         "sancionU": {
           "type": "Schema.ObjectId",
           "ref": "sancion",
-          "default":"No presenta sancion"
+          "required":false
         }
       },
 
       "reservaEspacio": {
         "espacioReservado": {
-          "type": ["Schema.ObjectId"],
+          "type": "Schema.ObjectId",
           "ref": "espacioCom",
           "required": true
         },
@@ -96,12 +106,12 @@
         "FechaTermino": {
         "type":"Date",
         "required":true
-      },
+       },
 
         "observacion": {
           "type": "String",
           "required": false,
-          "minLength": 1,
+          "minLenght": 1,
           "maxLength": 2000
         }
       },
@@ -110,19 +120,19 @@
         "tipoSancion":{
             "type":"String",
             "required": true,
-            "minLength": 1,
+            "minLenght": 1,
             "maxLength": 100
         },
         "tiempoSancion": {
           "type": "String",
           "required": false,
-          "minLength": 1,
+          "minLenght": 1,
           "maxLength": 100
         },
         "montoSancion": {
-          "type": "Number",
+          "type": "number",
           "required": false,
-          "minLength": 1,
+          "minLenght": 1,
           "maxLength": 10
         }
       }
