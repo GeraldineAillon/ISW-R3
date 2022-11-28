@@ -1,12 +1,12 @@
 const express = require('express');
-const usuarioController = require('../controllers/usuarioController.js');
-
+const sancionController = require('../controllers/sancionController');
 const api = express.Router();
 
-api.post('/usuario',usuarioController.createEspacioCom);
-api.post('/usuario',usuarioController.createUsuario);
-api.get('/usuario',usuarioController.getusuario);
-api.put('/usuario/update/:id', usuarioController.updateusuario);
-api.delete('/usuario/delete/:id',usuarioController.deleteusuario)
+api.post('/sancion',sancionController.createsancion);
+api.get('/sancion',sancionController.getsancion);
+api.put('/sancion/update/:id', sancionController.updateSancion);
+api.delete('/sancion/delete/:id',sancionController.deleteSancion)
+
+
 
 module.exports = api;
