@@ -5,15 +5,21 @@ const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
 
-app.use(cors());
-app.use(express.json());
+app.use=(cors());
+app.use= (express.json());
 app.options('*',cors());
 
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
-mongoose.set('useUnifiedTopology', true);
 
+const options={
+    useNewUrlParser: true,
+    autoIndex:true,
+    keepAlive:true,
+    connectTimeoutMS: 10000,
+    socketTimeoutMS: 45000,
+    family:4,
+    useUnifiedTopology: true
+
+}
 mongoose.connect(process.env.DB, options, (error)=>{
     if(error){
         console.log(error);

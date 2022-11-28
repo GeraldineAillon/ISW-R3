@@ -1,14 +1,13 @@
 const mongoose= require('mongoose');
 const Schema = mongoose.Schema;
 const sancionSchema = new Schema({
-
-    
     tipo:{
         Type: String,
         enum: [
             monetaria,
-            restriccion_reserva],
-
+            restriccion_reserva
+          ],
+       
     },
     
     tiempoSancion:{

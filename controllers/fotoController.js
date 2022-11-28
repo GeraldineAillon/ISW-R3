@@ -75,5 +75,6 @@ module.exports = {
     createFoto,
     getFoto,
     updateFoto,
-    deleteFoto
+    deleteFoto,
+    getFotos
 }
