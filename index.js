@@ -10,9 +10,11 @@ const espaciocomRoutes = require('./routes/espaciocomRoute');
 const reservaespacioRoutes = require('./routes/reservaespacioRoute');
 const fileRoutes = require('./routes/fileRoute')
 
+
 app.use(cors());
 app.use(express.json());
 app.options('*',cors());
+
 
 app.use('/api', espaciocomRoutes);
 app.use('/api', reservaespacioRoutes);
@@ -37,4 +39,3 @@ mongoose.connect(process.env.DB, (error)=>{
 app.listen(process.env.PORT, ()=>{
     console.log(`Server started on port ${process.env.PORT}`);
 })
-
