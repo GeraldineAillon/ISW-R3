@@ -8,7 +8,9 @@ dotenv.config();
 
 const espaciocomRoutes = require('./routes/espaciocomRoute');
 const reservaespacioRoutes = require('./routes/reservaespacioRoute');
-const fileRoutes = require('./routes/fileRoute')
+const fileRoutes = require('./routes/fileRoute');
+const usuarioRoutes = require('./routes/usuarioRoutes');
+const sancionRoutes = require('./routes/sancionRoutes');
 
 
 app.use(cors());
@@ -19,6 +21,8 @@ app.options('*',cors());
 app.use('/api', espaciocomRoutes);
 app.use('/api', reservaespacioRoutes);
 app.use('/api', fileRoutes);
+app.use('/api', usuarioRoutes);
+app.use('/api', sancionRoutes);
 
 
 
