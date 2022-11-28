@@ -5,16 +5,29 @@ const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
 
+
+const espaciocomRoutes = require('./routes/espaciocomRoute');
+const reservaespacioRoutes = require('./routes/reservaespacioRoute');
+const fileRoutes = require('./routes/fileRoute')
+
+
 app.use(cors());
 app.use(express.json());
 app.options('*',cors());
+
+
+app.use('/api', espaciocomRoutes);
+app.use('/api', reservaespacioRoutes);
+app.use('/api', fileRoutes);
+
+
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 
-mongoose.connect(process.env.DB, options, (error)=>{
+mongoose.connect(process.env.DB, (error)=>{
     if(error){
         console.log(error);
     }else{
@@ -25,6 +38,4 @@ mongoose.connect(process.env.DB, options, (error)=>{
 
 app.listen(process.env.PORT, ()=>{
     console.log(`Server started on port ${process.env.PORT}`);
-
-
 })

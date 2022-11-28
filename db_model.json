@@ -1,12 +1,16 @@
 {
-    "espaciocom": {
+    "espacioCom": {
         "name": {
           "type": "String",
           "required": true,
           "minLenght": 1,
           "maxLength": 100
         },
-        "foto": {},
+        "fotoespacio": {
+          "type": ["Schema.ObjectId"],
+          "ref":"file",
+          "required": false
+        },
         "description": {
           "type": "String",
           "required": true,
@@ -14,29 +18,47 @@
           "maxLength": 2000
         },
         "aforo": {
-          "type": "String",
+          "type": "Number",
           "required": true,
           "minLenght": 1,
           "maxLength": 100
         },
-        "tiempoReserva": {
-          "type": "number",
+        "tiemporeserva": {
+          "type": "Number",
           "required": true,
           "minLenght": 1,
           "maxLength": 100
         },
-        "estadoReserva": {
+        "estadoreserva": {
           "type":"String",
           "required": true,
-          "minLenght":1,
-          "maxLength":40
+          "maxLength": 30
           },
-          "estadoEspacio": {
+
+          "estadoespacio": {
           "type":"String",
           "required": true,
-          "minLenght":1,
-          "maxLength":40
-      }
+          "maxLength": 30
+      },
+      "motivomantencion":{
+          "type":"String",
+          "requiered":false,
+          "maxLength":2000
+        }
+    },
+    "file": {
+      "url": {
+        "type": "String",
+        "required": true
+    },
+    "name": {
+        "type": "String",
+        "required": true
+    },
+    "mimeType": {
+        "type": "String",
+        "required": true
+    }
     },
       "usuario": {
         "name": {
@@ -45,7 +67,11 @@
           "minLenght": 1,
           "maxLength": 100
         },
-        "foto": {},
+        "fotousuario": {
+          "type": "Schema.ObjectId",
+          "ref":"file",
+          "required": false
+        },
         "correoPersonal": {
           "type": "String",
           "required": true,
@@ -60,23 +86,27 @@
         },
         "role": {
           "type": "String",
+          "enum":[
+            "admin",
+            "user"
+          ],
           "default": "user"
         },
         "reserva": {
-          "type": "Schema.ObjectId",
+          "type": ["Schema.ObjectId"],
           "ref": "espacioCom",
           "default":"No registra reservas"
         },
         "sancionU": {
           "type": "Schema.ObjectId",
           "ref": "sancion",
-          "default":"No presenta sancion"
+          "required":false
         }
       },
 
-      "reservaespacio": {
+      "reservaEspacio": {
         "espacioReservado": {
-          "type": ["Schema.ObjectId"],
+          "type": "Schema.ObjectId",
           "ref": "espacioCom",
           "required": true
         },
@@ -102,8 +132,10 @@
         "tipoSancion":{
             "type":"String",
             "required": true,
-            "minLenght": 1,
-            "maxLength": 100
+            "enum":[
+              "veto",
+              "monetaria"
+            ]
         },
         "tiempoSancion": {
           "type": "String",
