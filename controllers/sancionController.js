@@ -53,8 +53,7 @@ const deleteSancion = (req, res) =>{
     })
 }
 
-module.exports ={
-    createsancion   
+module.exports ={  
     createsancion,
     getsancion ,
     updateSancion,

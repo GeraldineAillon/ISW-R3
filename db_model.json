@@ -94,7 +94,7 @@
         },
         "reserva": {
           "type": ["Schema.ObjectId"],
-          "ref": "espacioCom",
+          "ref": "espaciocom",
           "default":"No registra reservas"
         },
         "sancionU": {

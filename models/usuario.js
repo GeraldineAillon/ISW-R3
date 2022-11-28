@@ -7,14 +7,17 @@ const usuarioSchema = new Schema({
           minLenght: 1,
           maxLength: 100
         },
-        foto: {
-                type: [Schema.ObjectId],
-        ref : 'file'},
-        correoPersonal: {
+        correopersonal: {
           type: String,
           required: true,
           minLenght: 1,
           maxLength: 100
+        },
+        foto: {
+          type: [Schema.ObjectId],
+          ref : 'file',
+          required:false
+        
         },
         nroTelefono: {
           type: Number,
@@ -22,13 +25,18 @@ const usuarioSchema = new Schema({
           minLenght: 1,
           maxLength: 100
         },
+        reserva: {
+          type: [Schema.ObjectId],
+          ref:'reservaespacio',
+          default:"No registra reservas"
+        },
         role: {
           type: String,
-          required: true,
           enum: [
-            admin,
-            user
-          ]
+            "admin",
+            "user"
+          ],
+          default:"user"
         }
 
 })

@@ -1,11 +1,14 @@
 const usuario = require('../models/usuario');
+
 const createUsuario = (req,res)=>{
-    const {name,foto,nroTelefono,role} =req.body
+    const {name,foto,correopersonal,nroTelefono,role,reserva} =req.body
     const newUsuario = new usuario({
         name,
         foto,
+        correopersonal,
         nroTelefono,
-        role
+        role,
+        reserva
     })
     newUsuario.save((error,usuario)=>{
         if(error){
@@ -14,8 +17,8 @@ const createUsuario = (req,res)=>{
         return res.status(201).send(usuario);
     })
 }
-const getusuario= (req,res)=>{
-    usuario.find({},(error,usuario)=>{
+const getusuarios= (req,res)=>{
+    usuario.find((error,usuario)=>{
         if(error){
             return res.status(400).send({message:"No se pudo realizar la busqueda"})
         }
@@ -53,9 +56,8 @@ const deleteusuario = (req, res) =>{
 }
 
 module.exports ={
-    createUsuario 
     createUsuario, 
-    getusuario,
+    getusuarios,
     updateusuario,
     deleteusuario
 }

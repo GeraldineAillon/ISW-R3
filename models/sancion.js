@@ -4,8 +4,8 @@ const sancionSchema = new Schema({
     tipo:{
         Type: String,
         enum: [
-            monetaria,
-            restriccion_reserva
+            "monetaria",
+            "restriccion_reserva"
           ],
        
     },
