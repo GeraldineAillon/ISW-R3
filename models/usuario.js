@@ -7,7 +7,8 @@ const usuarioSchema = new Schema({
           minLenght: 1,
           maxLength: 100
         },
-        foto: {},
+        foto: {type:buffer,
+            required: true},
         correoPersonal: {
           type: String,
           required: true,
