@@ -18,38 +18,28 @@
           "maxLength": 2000
         },
         "aforo": {
-          "type": "String",
-          "required": true,
-          "minLenght": 1,
-          "maxLength": 100
-        },
-        "tiempoReserva": {
           "type": "Number",
           "required": true,
           "minLenght": 1,
           "maxLength": 100
         },
-        "estadoReserva": {
+        "tiemporeserva": {
+          "type": "Number",
+          "required": true,
+          "minLenght": 1,
+          "maxLength": 100
+        },
+        "estadoreserva": {
           "type":"String",
           "required": true,
-          "minLenght":1,
-          "maxLength":40
+          "maxLength": 30
           },
-          "estadoEspacio": {
+
+          "estadoespacio": {
           "type":"String",
           "required": true,
-          "minLenght":1,
+          "minLength":1,
           "maxLength":40
-      }
-    },
-    "foto": {
-      "nombre": {
-        "type":"String",
-        "required":false
-      },
-      "ruta":{
-        "type" :"String",
-        "required":true
       }
     },
       "usuario": {
@@ -78,6 +68,10 @@
         },
         "role": {
           "type": "String",
+          "enum":[
+            "admin",
+            "user"
+          ],
           "default": "user"
         },
         "reserva": {
@@ -120,8 +114,10 @@
         "tipoSancion":{
             "type":"String",
             "required": true,
-            "minLenght": 1,
-            "maxLength": 100
+            "enum":[
+              "veto",
+              "monetaria"
+            ]
         },
         "tiempoSancion": {
           "type": "String",
