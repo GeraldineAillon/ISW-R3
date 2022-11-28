@@ -4,15 +4,15 @@ const reservaespacioSchema = new Schema({
     espacioreservado: {
         type: Schema.ObjectId,
         ref: 'espaciocom',
-        required: true
+        required: false
       },
       fechainicio:{
-      type:Date,
+      type: String,
       required:true
       },
 
       fechatermino: {
-      type:Date,
+      type: String,
       required:true
      },
 

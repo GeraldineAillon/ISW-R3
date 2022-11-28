@@ -2,11 +2,14 @@ const Reservaespacio = require('../models/reservaespacio');
 
 //Funcion para crear reservas
 
-const createReservaespacio=(req,res)=>{
-    const{/*espacioreservado,*/fechainicio,fechatermino,observacion}= req.body;
+const createReservaespacio= async (req,res)=>{
+
+    const fechainicio = await fixDate(req.body.fechainicio)
+    const fechatermino = await fixDate(req.body.fechatermino)
+    const{espacioreservado,observacion}= req.body;
 
     const newReservaespacio = new Reservaespacio({
-        //espacioreservado,
+        espacioreservado,
         fechainicio,
         fechatermino,
         observacion
@@ -14,36 +17,57 @@ const createReservaespacio=(req,res)=>{
     newReservaespacio.save((error,reservaespacio)=>{
         if(error){
             return res.status(400).send({message:"No se ha podido reservar el espacio"})
+        }else{
+            return res.status(201).send(reservaespacio)
         }
-        return res.status(201).send(reservaespacio)
+     
     })
 }
+
+//funcion para arreglar fechas
+
+const fixDate =(fecha)=>{
+    const aux= new Date(Date.parse(fecha))
+    const date = aux.toLocaleString('es-CL')
+    return (date)
+}
+
 //Funcion para mostrar las reservas
 
 const getReservaespacios= (req,res)=>{
-    Reservaespacio.find({},(error,reservaespacios)=>{
-        if(error){
-            return res.status(400).send({message:"No se pudo realizar la busqueda"})
-        }
-        if(reservaespacios.length === 0){
-            return res.status(404).send({message:"No se encontraron reservas"})
-        }
-        return res.status(200).send(reservaespacios)
-    })
+     Reservaespacio.find({}).populate({path:'espaciocom'}).exec((error,reservaespacios)=>{
+            if(error){
+                return res.status(400).send({message:"No se pudo realizar la busqueda"})
+            }
+            if(reservaespacios.length === 0){
+                return res.status(404).send({message:"No se encontraron reservas"})
+            }
+            return res.status(200).send(reservaespacios)
+        })
 }
 //Funcion para actualizar datos de las reservas
 
-const updateReservaespacio = (req,res)=> {
+const updateReservaespacio = async (req,res)=> {
     const {id} = req.params
-    Reservaespacio.findByIdAndUpdate(id,req.body,(error,reservaespacio)=>{
-        if(error){
-            return res.status(400).send({message:"No se pudo actualizar la reserva"})
+    Reservaespacio.findById(id,async (err)=>{
+        if(req.body.fechainicio){
+            req.body.fechainicio = await fixDate(req.body.fechainicio) 
         }
-        if (!reservaespacio){
-            return res.status(404).send({message:"No se encontraron reservas"})
+        if(req.body.fechatermino){
+            req.body.fechatermino= await fixDate(req.body.fechatermino)
         }
-        return res.status(200).send({message:"Reserva actualizada"})
+        Reservaespacio.findByIdAndUpdate(id,req.body,(error,reservaespacio)=>{
+        
+            if(error){
+                return res.status(400).send({message:"No se pudo actualizar la reserva"})
+            }
+            if (!reservaespacio){
+                return res.status(404).send({message:"No se encontraron reservas"})
+            }
+            return res.status(200).send({message:"Reserva actualizada"})
+        })
     })
+    
 }
 
 //funcion para eliminar una reserva

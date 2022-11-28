@@ -1,29 +1,33 @@
 const Espaciocom = require('../models/espaciocom');
 //Funcion para crear los espacios comunes
 
-const createEspaciocom=(req,res)=>{
-    const{name,/*fotoespacio,*/description,aforo,tiempoReserva,estadoReserva,estadoEspacio}= req.body;
-
+const agregar_Espaciocom=(req,res)=>{
+    const{name,fotoespacio,description,aforo,tiemporeserva,estadoreserva,estadoespacio,motivomantencion}= req.body;
+    if(req.body.tiempoReserva>24){
+        return res.status(411).send({message:'El tiempo de reserva no debe superar las 24 horas'})
+    }
     const newEspaciocom = new Espaciocom({
         name,
-       // fotoespacio, 
+        fotoespacio, 
         description, 
         aforo,
-        tiempoReserva, 
-        estadoReserva, 
-        estadoEspacio
+        tiemporeserva, 
+        estadoreserva, 
+        estadoespacio,
+        motivomantencion
     })
     newEspaciocom.save((error,espaciocom)=>{
         if(error){
             return res.status(400).send({message:"No se ha podido crear el espacio comun"})
         }
+
         return res.status(201).send(espaciocom)
     })
 }
 //Funcion para mostrar [TODOS] los espacios comunes
 
-const getEspacioscom= (req,res)=>{
-    Espaciocom.find({},(error,espacioscom)=>{
+const mostrar_Espacioscom= (req,res)=>{
+    Espaciocom.find({}).populate({path:'foto'}).exec((error,espacioscom)=>{
         if(error){
             return res.status(400).send({message:"No se pudo realizar la busqueda"})
         }
@@ -35,8 +39,13 @@ const getEspacioscom= (req,res)=>{
 }
 //Funcion para actualizar datos de el/los espacios comunes
 
-const updateEspaciocom = (req,res)=> {
+const actualizar_Espaciocom = (req,res)=> {
     const {id} = req.params
+    if(req.body.tiemporeserva){
+    if(req.body.tiemporeserva>24){
+        return res.status(411).send({message:'El tiempo de reserva no debe superar las 24 horas'})
+        }
+    }   
     Espaciocom.findByIdAndUpdate(id,req.body,(error,espaciocom)=>{
         if(error){
             return res.status(400).send({message:"No se pudo actualizar el espacio comun"})
@@ -49,7 +58,7 @@ const updateEspaciocom = (req,res)=> {
 }
 
 // Borra un espacio comun
-const deleteEspaciocom = (req,res) =>{
+const borrar_Espaciocom = (req,res) =>{
     const {id} =req.params
     Espaciocom.findByIdAndDelete(id,(error,espaciocom)=>{
         if(error){
@@ -64,7 +73,7 @@ const deleteEspaciocom = (req,res) =>{
 
 
 //Busca solo [UN] espacio comun
-const getEspaciocom = (req,res)=>{
+const buscar_Espaciocom = (req,res)=>{
     const {id} =req.params
     Espaciocom.findById(id,(error,espaciocom)=>{
         if(error){
@@ -78,10 +87,10 @@ const getEspaciocom = (req,res)=>{
 }
 
 module.exports = {
-    createEspaciocom,
-    getEspacioscom,
-    updateEspaciocom,
-    deleteEspaciocom,
-    getEspaciocom
+    agregar_Espaciocom,
+    mostrar_Espacioscom,
+    actualizar_Espaciocom,
+    borrar_Espaciocom,
+    buscar_Espaciocom
 
 }

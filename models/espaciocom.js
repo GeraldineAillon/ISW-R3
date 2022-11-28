@@ -9,8 +9,7 @@ const espaciocomSchema = new Schema({
       },
       fotoespacio: {
         type: [Schema.ObjectId],
-        ref : 'foto',
-        required: false
+        ref : 'file'
       },
       description: {
         type: String,
@@ -19,28 +18,26 @@ const espaciocomSchema = new Schema({
         maxLength: 2000
       },
       aforo: {
-        type: String,
+        type: Number,
         required : true,
         minLength: 1,
         maxLength: 100
       },
-      tiempoReserva: {
+      tiemporeserva: {
         type: Number,
         required: true,
         minLength: 1,
         maxLength: 100
       },
-      estadoReserva: {
+      estadoreserva: {
         type:String,
         required: true,
-        minLength:1,
-        maxLength:40
+        maxLength: 30
         },
-        estadoEspacio: {
+        estadoespacio: {
         type:String,
         required: true,
-        minLength:1,
-        maxLength:40
+        maxLength: 30
     }
 })
 
