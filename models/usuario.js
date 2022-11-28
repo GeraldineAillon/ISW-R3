@@ -7,8 +7,9 @@ const usuarioSchema = new Schema({
           minLenght: 1,
           maxLength: 100
         },
-        foto: {type:buffer,
-            required: true},
+        foto: {
+                type: [Schema.ObjectId],
+        ref : 'file'},
         correoPersonal: {
           type: String,
           required: true,
