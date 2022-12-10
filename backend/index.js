@@ -8,15 +8,21 @@ dotenv.config();
 
 const espaciocomRoutes = require('./routes/espaciocomRoute');
 const reservaespacioRoutes = require('./routes/reservaespacioRoute');
-const fileRoutes = require('./routes/fileRoute')
+const fileRoutes = require('./routes/fileRoute');
+const usuarioRoutes = require('./routes/usuarioRoutes');
+const sancionRoutes = require('./routes/sancionRoutes');
+
 
 app.use(cors());
 app.use(express.json());
 app.options('*',cors());
 
+
 app.use('/api', espaciocomRoutes);
 app.use('/api', reservaespacioRoutes);
 app.use('/api', fileRoutes);
+app.use('/api', usuarioRoutes);
+app.use('/api', sancionRoutes);
 
 
 
@@ -37,4 +43,3 @@ mongoose.connect(process.env.DB, (error)=>{
 app.listen(process.env.PORT, ()=>{
     console.log(`Server started on port ${process.env.PORT}`);
 })
-
