@@ -1,6 +1,7 @@
 const fileModel = require("../models/file")
 
 const uploadNewFile = (req, res) => {
+    
     const { files } = req
     let aux = files.map((file) => {
         const newFile = new fileModel({
@@ -11,9 +12,11 @@ const uploadNewFile = (req, res) => {
         newFile.save((err, fileSaved) => {
             if (err) {
                 return res.status(400).send({ message: "Error al guardar el archivo" })
-            }
+            }return fileSaved
+            console.log("watefok lo wardo D:")
         })
-        return newFile
+        
+        console.log("watefok lo wardo D:")
     })
     return res.status(201).send(aux)
 }

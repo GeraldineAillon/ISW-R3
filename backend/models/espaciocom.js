@@ -38,6 +38,11 @@ const espaciocomSchema = new Schema({
         type:String,
         required: true,
         maxLength: 30
+    },
+    motivomantencion:{
+      type:String,
+      requiered:false,
+      maxLength:2000
     }
 })
 
