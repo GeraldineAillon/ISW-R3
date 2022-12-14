@@ -13,6 +13,7 @@ const usuarioRoutes = require('./routes/usuarioRoutes');
 const sancionRoutes = require('./routes/sancionRoutes');
 
 
+
 app.use(cors());
 app.use(express.json());
 app.options('*',cors());
