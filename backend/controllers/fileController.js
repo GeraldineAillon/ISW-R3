@@ -13,10 +13,7 @@ const uploadNewFile = (req, res) => {
             if (err) {
                 return res.status(400).send({ message: "Error al guardar el archivo" })
             }return fileSaved
-            console.log("watefok lo wardo D:")
         })
-        
-        console.log("watefok lo wardo D:")
     })
     return res.status(201).send(aux)
 }

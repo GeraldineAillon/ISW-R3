@@ -21,15 +21,13 @@ const upload = multer({
     storage: storage,
     fileFilter: function(req, file, cb) {
         if (file.mimetype === 'image/png'|| file.mimetype === 'image/jpeg'|| file.mimetype==='image/jpg') {
-            console.log("El archivo tiene la extension correcta")
             cb(null, true)
         } else {
-            console.log("El archivo tiene otra extension y no se permite")
-            cb(new Error({message:'Solo se permiten imagenes'}), false)
+            cb(1, false)
         }
     },
     limits: {
-        fileSize: 1024 * 1024 * 15
+        fileSize: 1024 * 1024 * 10
     }
 })
 
