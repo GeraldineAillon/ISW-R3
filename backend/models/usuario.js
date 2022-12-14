@@ -27,8 +27,7 @@ const usuarioSchema = new Schema({
         },
         reserva: {
           type: [Schema.ObjectId],
-          ref:'reservaespacio',
-          default:"No registra reservas"
+          ref:'reservaespacio'
         },
         role: {
           type: String,
@@ -37,6 +36,11 @@ const usuarioSchema = new Schema({
             "user"
           ],
           default:"user"
+        },
+        sancionU: {
+          type: Schema.ObjectId,
+          ref: sancion,
+          required:false
         }
 
 })

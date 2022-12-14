@@ -3,10 +3,14 @@ import {useState} from 'react'
 import InputTest from '../components/InputTest'
 
 export default function Home(){
+  const [value,setValue]=useState(0)
+
+
   return(
     <Stack>
       <InputTest boton={boton}/>
     </Stack>
-    
+        
+
   )
 }

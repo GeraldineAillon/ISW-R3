@@ -1,14 +1,15 @@
 const usuario = require('../models/usuario');
 
 const createUsuario = (req,res)=>{
-    const {name,foto,correopersonal,nroTelefono,role,reserva} =req.body
+    const {name,foto,correopersonal,nroTelefono,role,reserva,sancionU} =req.body
     const newUsuario = new usuario({
         name,
         foto,
         correopersonal,
         nroTelefono,
         role,
-        reserva
+        reserva,
+        sancionU
     })
     newUsuario.save((error,usuario)=>{
         if(error){

@@ -6,8 +6,7 @@ const sancionSchema = new Schema({
         enum: [
             "monetaria",
             "restriccion_reserva"
-          ],
-       
+          ]
     },
     
     tiempoSancion:{
@@ -18,7 +17,7 @@ const sancionSchema = new Schema({
     },
     montoSancion:{
         type: Number,
-        required: true,
+        required: false,
         minLenght:1,
         maxLength:100
     }

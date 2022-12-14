@@ -8,7 +8,6 @@ const createsancion = (req,res)=>{
     })
     newSancion.save((error,sancion)=>{
         if(error){
-            return res.status(400).send({message:"No se ha podido crear el espacio común"});
             return res.status(400).send({message:"No se ha podido crear la sancion"});
         }
         return res.status(201).send(sancion);
