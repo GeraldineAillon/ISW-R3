@@ -1,11 +1,8 @@
 const Espaciocom = require('../models/espaciocom');
 //Funcion para crear los espacios comunes
 
-const agregar_Espaciocom=(req,res)=>{
-    const{name,fotoespacio,description,aforo,tiemporeserva,estadoreserva,estadoespacio,motivomantencion}= req.body;
-    if(req.body.tiempoReserva>24){
-        return res.status(411).send({message:'El tiempo de reserva no debe superar las 24 horas'})
-    }
+const agregar_Espaciocom= async(req,res)=>{
+    const{name,fotoespacio,description,aforo,tiemporeserva,estadoreserva,estadoespacio,motivomantencion}= req.body
     const newEspaciocom = new Espaciocom({
         name,
         fotoespacio, 
@@ -24,6 +21,7 @@ const agregar_Espaciocom=(req,res)=>{
         return res.status(201).send(espaciocom)
     })
 }
+
 //Funcion para mostrar [TODOS] los espacios comunes
 
 const mostrar_Espacioscom= (req,res)=>{
@@ -41,11 +39,7 @@ const mostrar_Espacioscom= (req,res)=>{
 
 const actualizar_Espaciocom = (req,res)=> {
     const {id} = req.params
-    if(req.body.tiemporeserva){
-    if(req.body.tiemporeserva>24){
-        return res.status(411).send({message:'El tiempo de reserva no debe superar las 24 horas'})
-        }
-    }   
+    
     Espaciocom.findByIdAndUpdate(id,req.body,(error,espaciocom)=>{
         if(error){
             return res.status(400).send({message:"No se pudo actualizar el espacio comun"})

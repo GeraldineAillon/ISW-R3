@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Stack, Button } from '@chakra-ui/react'
+import { Input, Stack, Button,HStack } from '@chakra-ui/react'
 const InputTest = ({boton}) => {
 
   //kinda like a -for loop-. We have to 'map' msgs and then call the 'function' 
@@ -23,10 +23,13 @@ const InputTest = ({boton}) => {
   )*/
   return (
     <Stack>
-      <Button onClick={()=> window.location.href=('http://146.83.198.35:1281/api/espacioscom')}>Espacios comúnes</Button>
-      <Button onClick={()=> window.location.href=('http://146.83.198.35:1281/api/files')}>Fotos</Button> 
-      <Button onClick={()=> window.location.href=('http://146.83.198.35:1281/api/usuarios')}>usuarios</Button> 
-     </Stack>
+      <Button onClick={() => window.location.href = ('http://146.83.198.35:1281/api/espacioscom')}>Espacios comúnes</Button>
+      <Button onClick={() => window.location.href = ('http://146.83.198.35:1281/api/files')}>Fotos</Button>
+      <Button onClick={() => window.location.href = ('http://146.83.198.35:1281/api/usuarios')}>usuarios</Button>
+      <HStack>
+          <Button onClick={boton}>hola</Button>
+      </HStack>
+    </Stack>
   )
 
 }

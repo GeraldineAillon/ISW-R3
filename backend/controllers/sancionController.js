@@ -1,9 +1,9 @@
 const sancion = require('../models/sancion');
 const createsancion = (req,res)=>{
-    const {tipo,tiempoSacnion,montoSancion} =req.body
+    const {tipo,tiempoSancion,montoSancion} =req.body
     const newSancion = new sancion({
         tipo,
-        tiempoSacnion,
+        tiempoSancion,
         montoSancion
     })
     newSancion.save((error,sancion)=>{

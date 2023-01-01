@@ -39,7 +39,7 @@ const usuarioSchema = new Schema({
         },
         sancionU: {
           type: Schema.ObjectId,
-          ref: sancion,
+          ref: 'sancion',
           required:false
         }
 

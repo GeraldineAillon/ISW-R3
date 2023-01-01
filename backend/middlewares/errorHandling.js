@@ -1,4 +1,4 @@
-const fileErrors = (err, req, res, next) => {
+const fileErrors = (err, req, res,next) => {
     if (err) {
         if(err===1){
         console.log(err)
@@ -7,5 +7,6 @@ const fileErrors = (err, req, res, next) => {
       
     }
 }
-
-module.exports = {fileErrors}
+module.exports = {
+    fileErrors
+}
