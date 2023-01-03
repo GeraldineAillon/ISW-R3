@@ -20,7 +20,6 @@ const agregar_Espaciocom=(req,res)=>{
         if(error){
             return res.status(400).send({message:"No se ha podido crear el espacio comun"})
         }
-
         return res.status(201).send(espaciocom)
     })
 }

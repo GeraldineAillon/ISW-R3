@@ -41,6 +41,18 @@ const updateusuario = (req,res)=> {
         return res.status(200).send({message:"Datos usuarios actualizado"})
     })
 }
+const buscarusuario = (req,res)=>{
+    const {id} =req.params
+    Usuario.findById(id,(error,usuario)=>{
+        if(error){
+            return res.status(400).send({message:"No se pudo realizar la busqueda"})
+        }
+        if(usuario.length === 0){
+            return res.status(404).send({message:"No se encontró el usuario"})
+        }
+        return res.status(200).send(usuario)
+    })
+}
 
 const deleteusuario = (req, res) =>{
     const {id} =req.params
@@ -55,9 +67,11 @@ const deleteusuario = (req, res) =>{
     })
 }
 
+
 module.exports ={
     createUsuario, 
     getusuarios,
     updateusuario,
-    deleteusuario
+    deleteusuario,
+    buscarusuario
 }

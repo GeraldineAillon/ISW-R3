@@ -1,4 +1,5 @@
 const Reservaespacio = require('../models/reservaespacio');
+const User = require('../models/usuario');
 const fechaactual=new Date();
 
 //Funcion para crear reservas
@@ -6,12 +7,19 @@ const fechaactual=new Date();
 const createReservaespacio= async (req,res)=>{
   const fechainicio=await fixDate(req.body.fechainicio)
   const fechatermino=await fixDate(req.body.fechatermino)
-    const{espacioreservado,observacion}= req.body;
+    const{espacioreservado,observacion,userreserva}= req.body;
     const newReservaespacio = new Reservaespacio({
         espacioreservado,
         fechainicio,
         fechatermino,
-        observacion
+        observacion,
+        userreserva
+    })
+    User.findById(userreserva,(err)=>{
+            const sancion= req.body.sancionU
+            if(sancion){
+                return res.status(412).send({message:"El ususario tiene sanciones pendientes"},sancion)
+            }
     })
     if(fechainicio>fechatermino|| fechainicio<fechaactual || fechatermino< fechaactual){
         return res.status(411).send({message:"Las fechas no coinciden"})

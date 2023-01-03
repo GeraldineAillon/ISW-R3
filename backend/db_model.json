@@ -125,6 +125,11 @@
           "required": false,
           "minLenght": 1,
           "maxLength": 2000
+        },
+        "userreserva":{
+          "type": "Schema.ObjectId",
+          "ref": "usuario",
+          "required":true
         }
       },
 

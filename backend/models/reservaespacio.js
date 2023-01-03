@@ -4,7 +4,7 @@ const reservaespacioSchema = new Schema({
     espacioreservado: {
         type: Schema.ObjectId,
         ref: 'espaciocom',
-        required: false
+        required: true
       },
       fechainicio:{
       type: String,
@@ -21,6 +21,11 @@ const reservaespacioSchema = new Schema({
         required: false,
         minLenght: 1,
         maxLength: 2000
+      },
+      userreserva:{
+        type: Schema.ObjectId,
+        ref: 'usuario',
+        required:true
       }
 })
 
