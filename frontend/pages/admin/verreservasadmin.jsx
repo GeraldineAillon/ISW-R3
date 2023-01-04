@@ -8,8 +8,19 @@ const reservasadmin=()=>{
   const [reservas,setReservas]= useState([])
   const router=useRouter()
   const getReservas = async()=>{
-    const response=await axios.get(`${process.env.API_URL}/reservaespacios`)
-    setReservas(response.data)
+     try {
+      const response=await axios.get(`${process.env.API_URL}/reservaespacios`)
+      setReservas(response.data)
+     } catch (error) {
+        Swal.fire({
+          title: 'Oops..',
+          text:'No se encontraron reservas',
+          icon: 'info',
+          confirmButtonText:'Ok'
+        })
+     }
+    
+    
   }
 
   useEffect(()=>{
@@ -44,6 +55,7 @@ const reservasadmin=()=>{
               <Td>{reserva.fechatermino}</Td>
               <Td>{reserva.userreserva}</Td>
               <Td><Button colorScheme="blue" onClick={()=>onDelete(reserva._id)}>Eliminar</Button></Td>
+              <Td><Button my={10}  colorScheme="teal">Editar</Button></Td>
             </Tr>
         )
     })

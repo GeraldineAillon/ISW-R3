@@ -42,14 +42,14 @@ const onDelete= async (id)=>{
               <Td>{espacio.name}</Td>
               <Td>{espacio.description}</Td>
               <Td>{espacio.aforo}</Td>
-              <Td>{espacio.tiemporeserva}</Td>
+              <Td>{espacio.tiemporeserva} horas</Td>
               <Td>{espacio.estadoreserva}</Td>
               <Td>{espacio.estadoespacio}</Td>
               <Td>{espacio.motivomantencion}</Td>
 
               <HStack>
               <Button my={10} colorScheme="red" onClick={()=>onDelete(espacio._id)}>Eliminar</Button>
-              <Button my={10}  colorScheme="twitter">Editar</Button>
+              <Button my={10}  colorScheme="teal">Editar</Button>
               </HStack>
             </Tr>
         )
@@ -64,7 +64,7 @@ const onDelete= async (id)=>{
             <Td fontWeight="bold">Nombre</Td>
             <Td fontWeight="bold">Descripcion</Td>
             <Td fontWeight="bold">Aforo</Td>
-            <Td fontWeight="bold">Tiempo de reserva(en horas)</Td>
+            <Td fontWeight="bold">Tiempo de reserva</Td>
             <Td fontWeight="bold">Estado de la reserva</Td>
             <Td fontWeight="bold">Estado del espacio</Td>
             <Td fontWeight="bold">Motivo de la mantencion</Td>

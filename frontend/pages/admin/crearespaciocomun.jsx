@@ -1,6 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
-import {FormErrorMessage,FormHelperText,FormControl,FormLabel,Textarea,Input, Stack, Button, Container, Text, HStack, VStack, InputGroup, Heading, Table, Thead, Tr, Td,Tbody} from '@chakra-ui/react'
+import {FormControl,FormLabel,Textarea,Input, Stack, Button, Container,HStack,Heading} from '@chakra-ui/react'
 import Swal from 'sweetalert2'
 import {useRouter} from 'next/router'
 
@@ -88,7 +88,7 @@ const espacios=()=>{
             </FormControl>
             <HStack>
                 <Button colorScheme="teal" size="md" type="submit" my={5} onClick={onSubmit}>Crear espacio común</Button>
-                <Button colorScheme={"teal"} onClick={()=>router.push('/admin/admin')}>Volver</Button>
+                <Button colorScheme={"red"} onClick={()=>router.push('/admin/admin')}>Volver</Button>
             </HStack>
         </Stack>
         </Container>

@@ -1,6 +1,4 @@
-import {Input, Stack, Button, Container, Text, Heading,HStack, VStack} from '@chakra-ui/react'
-import {useState, useEffect} from 'react'
-import axios from 'axios'
+import {Button, Container,Heading,HStack} from '@chakra-ui/react'
 import {useRouter} from 'next/router'
 
 
@@ -16,6 +14,5 @@ export default function Home(){
         <Button colorScheme="teal" onClick={()=>router.push('/user/user')} my={10}>vista usuario</Button>
         </HStack>
       </Container>   
-
   )
 }
