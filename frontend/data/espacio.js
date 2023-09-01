@@ -9,14 +9,13 @@ const getReserva= async (id)=>{
     return response
 }
 
-const putEspacio = async (espacio,id) => {
-    const response = await axios.put(`${process.env.API_URL}/espaciocom/update(${id})`, {
-    });
+const getUsuario= async (id)=>{
+    const response= await axios.get(`${process.env.API_URL}/usuario/search/${id}`)
     return response
 }
 
 module.exports={
     getEspacio,
-    putEspacio,
+    getUsuario,
     getReserva
 }

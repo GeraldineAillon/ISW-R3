@@ -43,7 +43,7 @@ const updateusuario = (req,res)=> {
 }
 const buscarusuario = (req,res)=>{
     const {id} =req.params
-    Usuario.findById(id,(error,usuario)=>{
+    usuario.findById(id,(error,usuario)=>{
         if(error){
             return res.status(400).send({message:"No se pudo realizar la busqueda"})
         }

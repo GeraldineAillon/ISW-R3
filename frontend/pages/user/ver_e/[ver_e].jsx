@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import { Button, Text,Image, Stack,Card,CardBody,CardFooter,ButtonGroup,Divider,Container,Heading} from '@chakra-ui/react'
+import {useState } from 'react'
+import {useRouter } from 'next/router'
+import {Button, Text,Image, Stack,Card,CardBody,CardFooter,ButtonGroup,Divider,Container,Heading} from '@chakra-ui/react'
 import React from 'react'
 import {getEspacio} from '../../../data/espacio'
 
@@ -29,8 +29,6 @@ const verespacio = (data) => {
     const router = useRouter()
     const { space } = router.query
     const [espacio] = useState(data)
-    //console.log(product)
-    //console.log(`/producto/editar/${product._id}`)
         return(
             <Container centerContent>
             <Card maxW='sm'>

@@ -6,7 +6,7 @@ const sancionSchema = new Schema({
         enum: [
             "monetaria",
             "restriccion_reserva"
-          ],
+          ]
        
     },
     

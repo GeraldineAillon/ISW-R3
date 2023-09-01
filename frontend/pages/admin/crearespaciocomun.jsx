@@ -29,10 +29,9 @@ const espacios=()=>{
                 confirmButtonText:'Ok'
             }).then((result)=>{
                 if(result.isConfirmed){
-                      router.push('/admin/admin')
+                    router.push('/admin/admin')
                 }
             })
-          
         }
         } catch (error) {
             Swal.fire({
@@ -59,7 +58,7 @@ const espacios=()=>{
         <Stack>
             <FormControl isRequired>
                 <FormLabel>Nombre espacio</FormLabel>
-               <Input placeholder="Nombre del espacio comun" type={"text"} onChange={onChange} name="name"/>
+            <Input placeholder="Nombre del espacio comun" type={"text"} onChange={onChange} name="name"/>
             </FormControl>
             <FormControl isRequired>
                 <FormLabel>Descripcion</FormLabel>
@@ -67,24 +66,24 @@ const espacios=()=>{
             </FormControl>
             <FormControl isRequired>
                 <FormLabel>Aforo</FormLabel>
-               <Input placeholder="Aforo disponible para el espacio" type={"number"} onChange={onChange} name="aforo"/>
+            <Input placeholder="Aforo disponible para el espacio" type={"number"} onChange={onChange} name="aforo"/>
             </FormControl>
             <FormControl isRequired>
                 <FormLabel>Tiempo de reserva</FormLabel>
-               <Input placeholder="Horas por las que se puede reserva el espacio" type={"number"} onChange={onChange} name="tiemporeserva"/>
+            <Input placeholder="Horas por las que se puede reserva el espacio" type={"number"} onChange={onChange} name="tiemporeserva"/>
             </FormControl>
 
             <FormControl isRequired>
                 <FormLabel>Estado de la reserva</FormLabel>
-               <Input placeholder="disponible, reservado, en mantencion, etc"  type={"text"} onChange={onChange} name="estadoreserva"/>
+            <Input placeholder="disponible, reservado, en mantencion, etc"  type={"text"} onChange={onChange} name="estadoreserva"/>
             </FormControl>
             <FormControl isRequired>
                 <FormLabel>Estado del espacio</FormLabel>
-               <Input placeholder="sucio, bueno, malo, requiere mantencion,etc" type={"text"} onChange={onChange} name="estadoespacio"/>
+            <Input placeholder="sucio, bueno, malo, requiere mantencion,etc" type={"text"} onChange={onChange} name="estadoespacio"/>
             </FormControl>
             <FormControl>
                 <FormLabel>Motivo de la mantencion</FormLabel>
-               <Textarea placeholder="Motivo de la mantencion al espacio" type={"text"} onChange={onChange} name="motivomantencion"/>
+            <Textarea placeholder="Motivo de la mantencion al espacio" type={"text"} onChange={onChange} name="motivomantencion"/>
             </FormControl>
             <HStack>
                 <Button colorScheme="teal" size="md" type="submit" my={5} onClick={onSubmit}>Crear espacio común</Button>

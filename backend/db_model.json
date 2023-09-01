@@ -34,12 +34,11 @@
           "required": true,
           "maxLength": 30
           },
-
           "estadoespacio": {
           "type":"String",
           "required": true,
           "maxLength": 30
-      },
+          },
       "motivomantencion":{
           "type":"String",
           "requiered":false,
@@ -103,7 +102,6 @@
           "required":false
         }
       },
-
       "reservaespacio": {
         "espacioReservado": {
           "type": "Schema.ObjectId",
@@ -118,7 +116,7 @@
         "FechaTermino": {
         "type":"Date",
         "required":true
-       },
+        },
 
         "observacion": {
           "type": "String",
@@ -156,3 +154,4 @@
         }
       }
 }
+

@@ -47,7 +47,7 @@ const onDelete= async (id)=>{
 
               <HStack>
               <Button my={10} colorScheme="red" onClick={()=>onDelete(Usuarios._id)}>Eliminar</Button>
-              <Button my={10}  colorScheme="twitter">Editar</Button>
+              <Button my={10}  colorScheme="twitter" onClick={()=>router.push(`auser/${Usuarios._id}`)} >Editar</Button>
               </HStack>
             </Tr>
         )
